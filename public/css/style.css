@@ -1,0 +1,33 @@
+span.right			{float:right;}
+a span 				{width:16px;height:16px;display:inline-block;}
+span.add 			{background: url('./../images/add.png') no-repeat}
+span.admin			{background: url('./../images/application_view_columns.png') no-repeat}
+span.config			{background: url('./../images/cog.png') no-repeat}
+span.delete			{background: url('./../images/bin_closed.png') no-repeat}
+span.edit			{background: url('./../images/pencil.png') no-repeat}
+span.user			{background: url('./../images/status_online.png') no-repeat}
+span.dump_database	{background: url('./../images/database_save.png') no-repeat}
+span.dump_schema	{background: url('./../images/database_table.png') no-repeat}
+span.dump_project	{background: url('./../images/compress.png') no-repeat}
+span.refresh		{background: url('./../images/arrow_refresh.png') no-repeat}
+span.logout			{background: url('./../images/door_out.png') no-repeat}
+span.gotoweb		{background: url('./../images/page_world.png') no-repeat}
+span.ccc			{background: url('./../images/script_code_red.png') no-repeat}
+
+#admin_menu div.current{background-color: yellow}
+table.minify {width:292px; margin-right: 25px;float:left;}
+div.overflow{overflow: hidden;clear:both;}
+ul.controllers {	
+	overflow: hidden;clear:both;
+	margin-bottom: 0;
+	width:200px;
+}
+div.add-item{margin-bottom:15px;}
+ul.controllers li {display:block;overflow:hidden;clear:both;margin:0;}
+ul.controllers li label{float:left;}
+ul.controllers li select{float:right;}
+.col1, .col2{min-width:350px;float:left;display:inline-block;}
+div.config div.overflow, form.config ul.controllers{
+	min-height:280px;
+}
+div.instance{display:block;overflow: hidden;;clear: both;}
