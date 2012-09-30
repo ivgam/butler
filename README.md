@@ -1,7 +1,7 @@
 Butler
 =================
 
-Butler es un Framework PHP que pretende reducir la complejidad y el tiempo empleados a la hora de desarrollar un website o webapp,
+Butler es un Framework PHP que pretende reducir la complejidad y el tiempo empleados a la hora de desarrollar un website o webapp
 mediante el uso de una estructura MVC y una serie de funcionalidades consideradas comunes y prácticas en la mayoría de proyectos.
 
 Algunas de ellas son:
