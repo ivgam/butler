@@ -15,7 +15,7 @@ class Dumper_Controller extends Fw_Controller {
 
 	public function all() {
 		header('Content-Type: application/sql; charset=utf-8');
-		header('Content-Disposition: attachment; filename="dump_'.  date('Y_m_d').'_.sql"');
+		header('Content-Disposition: attachment; filename="dump_'.  date('Y_m_d').'.sql"');
 		$oModel = new Dumper_Model();
 		$oModel->dump(true);
 	}

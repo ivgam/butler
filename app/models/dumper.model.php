@@ -24,7 +24,7 @@ class Dumper_Model extends Fw_Model {
 				$res = $statement->fetchAll();				
 				foreach($res as $row){
 					array_walk($row, 'escape_sql_value', $this->oDb);
-					echo "INSERT INTO TABLE $table VALUES (".  implode(',', $row).");\n";				
+					echo "INSERT INTO $table VALUES (".  implode(',', $row).");\n";				
 				}
 				echo "\n\n";
 			}
