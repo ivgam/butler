@@ -13,6 +13,9 @@ span.refresh		{background: url('./../images/arrow_refresh.png') no-repeat}
 span.logout			{background: url('./../images/door_out.png') no-repeat}
 span.gotoweb		{background: url('./../images/page_world.png') no-repeat}
 span.ccc			{background: url('./../images/script_code_red.png') no-repeat}
+span.key			{background: url('./../images/key.png') no-repeat}
+span.server			{background: url('./../images/server.png') no-repeat}
+span.database		{background: url('./../images/database.png') no-repeat}
 
 #admin_menu div.current{background-color: yellow}
 table.minify {width:292px; margin-right: 25px;float:left;}
@@ -31,3 +34,8 @@ div.config div.overflow, form.config ul.controllers{
 	min-height:280px;
 }
 div.instance{display:block;overflow: hidden;;clear: both;}
+
+ul.database_instance li label, ul.route li label{ float:left; width:100px}
+ul.database_instance li label span , ul.route li label span{ padding-left:20px;margin-right:10px}
+#database_instances,#routes {overflow:hidden;display:block; clear:both}
+#database_instances div.instance,#routes div.route{width:300px; display:inline-block}

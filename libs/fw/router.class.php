@@ -14,7 +14,8 @@ class Fw_Router {
 		  ||(file_exists(VIEWS_PATH . DS . $resource . DS . $task . '.php'))
 			){
 			return 
-				array(	'controller'=>$controller, 
+				array(
+						'controller'=>$controller, 
 						'task'=>$task,
 						'resource'=>$resource,
 						'cacheable'=>false,

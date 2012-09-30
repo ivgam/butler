@@ -3,8 +3,7 @@ class Admin_Controller extends Fw_Controller{
 	public function __construct() {
 		$this->layout = 'admin';	
 	}
-	public function config_acl(){
-		$acl_raw = parse_ini_file(CONFIG_PATH.DS.'acl.ini', true);
+	private function getControllerList(){
 		$controllers_list = array();		
 		if(is_dir(CONTROLLERS_PATH) && $handler = opendir(CONTROLLERS_PATH)){
 			while (false !== ($entry = readdir($handler))){
@@ -16,6 +15,12 @@ class Admin_Controller extends Fw_Controller{
 				}
 			}			
 		}
+		return $controllers_list;
+	}
+	
+	public function config_acl(){
+		$acl_raw = parse_ini_file(CONFIG_PATH.DS.'acl.ini', true);
+		$controllers_list = $this->getControllerList();		
 		Fw_Register::setRef('acl_raw', $acl_raw);
 		Fw_Register::setRef('controllers_list', $controllers_list);		
 		parent::display('config_acl', true, 'admin');
@@ -28,12 +33,16 @@ class Admin_Controller extends Fw_Controller{
 		Fw_Register::setRef('config_json',json_encode($config_raw));	
 		parent::display('config_configuration', true, 'admin');
 	}
-	public function config_databases(){		
+	public function config_databases(){
 		$databases_raw = parse_ini_file(CONFIG_PATH.DS.'databases.ini', true);		
 		Fw_Register::setRef('databases_json',json_encode($databases_raw));
 		parent::display('config_databases', true, 'admin');
 	}
 	public function config_routes(){	
+		include CONFIG_PATH.DS.'routes.php';
+		$controllers_list = $this->getControllerList();		
+		Fw_Register::setRef('controllers_list', $controllers_list);		
+		Fw_Register::setRef('routes_json',json_encode($routes));
 		parent::display('config_routes', true, 'admin');	
 	}
 	public function config_crud(){

@@ -13,7 +13,7 @@ class Bootstrap {
 
 	private function init_app() {		
 		define('CACHE_MODE', false);
-		define('DEBUG_MODE', true);
+		define('DEBUG_MODE', false);
 		define('LOG_QUERYS', false);
 		define('MINIFY_JS', false);
 		define('MINIFY_CSS', false);

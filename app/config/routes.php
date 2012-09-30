@@ -2,7 +2,7 @@
 $routes = array (
 		'login'=>array(
 				'controller'	=> 'Auth_Controller',				
-				'url'			=> 'login/',
+				'url'			=> 'login',
 				'regex'			=> '/login/',
 				'params'		=> array(),
 				'task'			=> 'login',
@@ -11,7 +11,7 @@ $routes = array (
 		),
 		'logout'=>array(
 				'controller'	=> 'Auth_Controller',				
-				'url'			=> 'logout/',
+				'url'			=> 'logout',
 				'regex'			=> '/logout/',
 				'params'		=> array(),
 				'task'			=> 'logout',
@@ -20,7 +20,7 @@ $routes = array (
 		),
 		'admin'=>array(
 				'controller'	=> 'Admin_Controller',				
-				'url'			=> 'admin/',
+				'url'			=> 'admin',
 				'regex'			=> '/admin/',
 				'params'		=> array(),
 				'task'			=> 'home',
@@ -38,7 +38,7 @@ $routes = array (
 		),
 		'home'=>array(
 				'controller'	=> 'Static_Controller',
-				'url'			=> '/',
+				'url'			=> '',
 				'regex'			=> '//',
 				'params'		=> array(),
 				'task'			=> 'home',
