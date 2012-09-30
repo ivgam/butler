@@ -13,13 +13,14 @@ $controllers_list = Fw_Register::getRef('controllers_list');
 		content += '</select>';
 		return content;
 	}
-	function getTasksSelect(controller,task){				
+	function getTasksSelect(controller,task){
 		var content = '<select name="task">';
 		$.each(controllers_list, function(k,v){
-			c = k.charAt(0).toUpperCase() + k.slice(1) + '_Controller';			
+			c = k.charAt(0).toUpperCase() + k.slice(1) + '_Controller';
 			if(c == controller){
-				$.each(v, function(i,t){
-					content += '<option value="'+task+'" '+((task==t)?'selected="selected"':'')+'>'+t+'</option>';				
+				content += '<option value=""></option>';				
+				$.each(v, function(i,t){			
+					content += '<option value="'+t+'" '+((task==t)?'selected="selected"':'')+'>'+t+'</option>';				
 				});
 			}
 		});
@@ -39,13 +40,13 @@ $controllers_list = Fw_Register::getRef('controllers_list');
 		$('#save').live('click',function(){
 			var content = '<'+'?'+'php'+"\n";
 			content += "$routes = array ( \n";
-			$('div.route').each(function(){
+			$('div.route').each(function(){				
 				content += "\t"+'"'+$(this).children().filter('h3').text()+'"'+' => array ('+"\n";
 				content += "\t\t"+'"controller" => "'+$(this).children().find('select[name=controller]').val()+'",'+"\n";
 				content += "\t\t"+'"url" => "'+$(this).children().find('input[name=url]').val()+'",'+"\n";
 				content += "\t\t"+'"regex" => "/'+($(this).children().find('input[name=url]').val()).replace(/\//g, '\\/')+'/",'+"\n";
 				content += "\t\t"+'"params" => array(),'+"\n";
-				content += "\t\t"+'"task" => "'+$(this).children().find('input[name=task]').val()+'",'+"\n";
+				content += "\t\t"+'"task" => "'+$(this).children().find('select[name=task]').val()+'",'+"\n";
 				content += "\t\t"+'"resource" => "'+$(this).children().find('input[name=resource]').val()+'",'+"\n";
 				content += "\t\t"+'"cacheable" => '+$(this).children().find('input[name=cacheable]').is(':checked')+"\n";
 				content += "\t),\n";
@@ -106,7 +107,7 @@ $controllers_list = Fw_Register::getRef('controllers_list');
 			} else {
 				$('#routes').append(div);				
 			}
-		}
+		}		
 		$.each(routes_json, function(route, values){			
 			addRoute(route, values, false);			
 		});

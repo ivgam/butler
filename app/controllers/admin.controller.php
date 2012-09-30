@@ -3,24 +3,10 @@ class Admin_Controller extends Fw_Controller{
 	public function __construct() {
 		$this->layout = 'admin';	
 	}
-	private function getControllerList(){
-		$controllers_list = array();		
-		if(is_dir(CONTROLLERS_PATH) && $handler = opendir(CONTROLLERS_PATH)){
-			while (false !== ($entry = readdir($handler))){
-				if(	is_file(CONTROLLERS_PATH.DS.$entry) && strpos($entry, '.controller.php')){
-					$classname = str_replace('.controller.php', '_controller', $entry);
-					$resource = str_replace('.controller.php', '', $entry); 
-					$methods = get_class_methods($classname);
-					$controllers_list[$resource] = $methods;					
-				}
-			}			
-		}
-		return $controllers_list;
-	}
 	
 	public function config_acl(){
 		$acl_raw = parse_ini_file(CONFIG_PATH.DS.'acl.ini', true);
-		$controllers_list = $this->getControllerList();		
+		$controllers_list = Fw_Tools::getControllerList();
 		Fw_Register::setRef('acl_raw', $acl_raw);
 		Fw_Register::setRef('controllers_list', $controllers_list);		
 		parent::display('config_acl', true, 'admin');
@@ -40,7 +26,7 @@ class Admin_Controller extends Fw_Controller{
 	}
 	public function config_routes(){	
 		include CONFIG_PATH.DS.'routes.php';
-		$controllers_list = $this->getControllerList();		
+		$controllers_list = Fw_Tools::getControllerList();
 		Fw_Register::setRef('controllers_list', $controllers_list);		
 		Fw_Register::setRef('routes_json',json_encode($routes));
 		parent::display('config_routes', true, 'admin');	
