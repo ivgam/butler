@@ -4,7 +4,7 @@ class Fw_Router {
 
 	public static function getRoute($url=false) {
 		$url = isset($url)?$url:$_SERVER['REQUEST_URI'];		
-		$url = str_replace(BASE_URI, '', $url);
+		$url = substr($url, strlen(BASE_URI));
 		$url = (strpos($url, '?'))?strstr($url, '?', true):$url;
 		$parts = explode('/', $url);
 		$resource = (isset($parts[0]))?$parts[0]:false;

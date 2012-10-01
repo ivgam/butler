@@ -23,7 +23,7 @@ $routes = array (
 		"url" => "admin",
 		"regex" => "/admin/",
 		"params" => array(),
-		"task" => "",
+		"task" => "home",
 		"resource" => "admin",
 		"cacheable" => false
 	),
@@ -41,7 +41,7 @@ $routes = array (
 		"url" => "",
 		"regex" => "//",
 		"params" => array(),
-		"task" => "",
+		"task" => "home",
 		"resource" => "static",
 		"cacheable" => true
 	),
