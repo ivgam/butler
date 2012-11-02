@@ -26,7 +26,7 @@ abstract class Fw_Controller {
 		if (method_exists($this, $task) && !$bExecuted) {
 			$this->$task();
 		} else {
-			$controller = ($controller != false)?$controller:strtolower(str_ireplace('_Controller', '', get_class($this)));			
+			$controller = ($controller != false)?$controller:strtolower(str_ireplace('_Controller', '', get_class($this)));
 			require_once VIEWS_PATH . DS . $controller . DS . $task . '.php';
 		}
 	}

@@ -1,6 +1,6 @@
 <?php
 
-abstract class Fw_AdminController extends Fw_Controller {
+abstract class Fw_CrudController extends Fw_Controller {
 
 	protected $model;
 	protected $setParams = array();
@@ -13,7 +13,7 @@ abstract class Fw_AdminController extends Fw_Controller {
 		$oResult = $oModel->getData();
 		Fw_Register::setRef('oResult', $oResult);
 		Fw_Register::setRef('oParams', $this->adminParams);		
-		parent::display('admin', true, 'admin');
+		parent::display('admin', true, 'crud');
 	}
 
 	public function edit() {
@@ -23,13 +23,13 @@ abstract class Fw_AdminController extends Fw_Controller {
 		$oResult = (isset($id)) ? $oModel->getRow($id) : false;
 		Fw_Register::setRef('oResult', $oResult);
 		Fw_Register::setRef('oParams', $this->editParams);
-		parent::display('edit', true, 'admin');
+		parent::display('edit', true, 'crud');
 	}
 
 	public function add() {
 		$this->layout = 'admin';
 		Fw_Register::setRef('oParams', $this->editParams);
-		parent::display('edit', true, 'admin');
+		parent::display('edit', true, 'crud');
 	}
 
 	public function set($redirect = true) {
@@ -69,7 +69,7 @@ abstract class Fw_AdminController extends Fw_Controller {
 		Fw_Register::setRef('oParams', $this->adminParams);		
 		Fw_Register::addMessage("Item $id deleted successfully.", "yellow");
 		if ($redirect){
-			Fw_Router::redirect(Fw_Register::getRef('current_resource'), 'admin');
+			Fw_Router::redirect(Fw_Register::getRef('current_resource'), 'crud');
 		} else {
 			return $id;
 		}

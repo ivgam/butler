@@ -102,16 +102,16 @@ class Bootstrap {
 	private function init_admin(){
 		$oUser = Fw_Register::getRef('user');
 		if($oUser['usertype'] == 'admin'){
-			$admin_controllers = array();
+			$crud_controllers = array();
 			$acl = Fw_Register::getRef('acl');
 			foreach($acl[$oUser['usertype']] as $controller=>$access){
 				if(isset($access['all']) && class_exists($controller.'_controller')){
-					if(get_parent_class($controller.'_controller') == 'Fw_AdminController'){
-						$admin_controllers[] = $controller;
+					if(is_subclass_of($controller.'_controller','Fw_CrudController')){
+						$crud_controllers[] = $controller;
 					}
 				}
 			}
-			Fw_Register::setRef('admin_controllers', $admin_controllers);
+			Fw_Register::setRef('crud_controllers', $crud_controllers);
 		}
 	}
 	private function init_scripts_and_styles(){

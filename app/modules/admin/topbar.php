@@ -35,7 +35,7 @@
     <div class="row">
       <div class="tablet-padding">
         <div class="three columns property">
-          <a href="<?php echo Fw_Router::getUrl('admin', 'config_acl') ?>">
+          <a href="<?php echo Fw_Router::getUrl('config', 'config_acl') ?>">
             <h4>ACL</h4>
             <p>
 							Configura tu ACL(Access Control List) para lograr una mayor flexibilidad de uso de tu 
@@ -45,7 +45,7 @@
           </a>
         </div>
         <div class="three columns property">
-          <a href="<?php echo Fw_Router::getUrl('admin', 'config_databases') ?>">
+          <a href="<?php echo Fw_Router::getUrl('config', 'config_databases') ?>">
             <h4>Base de Datos</h4>
             <p>
 							Configura tus instancias de base de datos mediante la definición de su host, su user 
@@ -55,7 +55,7 @@
           </a>
         </div>        
         <div class="three columns property">
-          <a href="<?php echo Fw_Router::getUrl('admin', 'config_configuration') ?>">
+          <a href="<?php echo Fw_Router::getUrl('config', 'config_configuration') ?>">
             <h4>Variables de Configuración</h4>
             <p>
 							Define todo aquello que creas que vas a poder necesitar en tu código mediante la creación de variables de configuración. 
@@ -65,7 +65,7 @@
           </a>
         </div>              
         <div class="three columns property">
-          <a href="<?php echo Fw_Router::getUrl('admin', 'config_routes') ?>">
+          <a href="<?php echo Fw_Router::getUrl('config', 'config_routes') ?>">
             <h4>Rutas</h4>
             <p>
 							Para gustos, los colores. Define todas y cada una de las rutas de tu aplicación para lograr un posicionamiento web a tu
@@ -80,7 +80,7 @@
 		<div class="row">
 			<div class="tablet-padding">
 				<div class="three columns property">
-					<a href="<?php echo Fw_Router::getUrl('admin', 'config_scripts') ?>">
+					<a href="<?php echo Fw_Router::getUrl('config', 'config_scripts') ?>">
 						<h4>Scripts</h4>
 						<p>
 							Configura tu ACL(Access Control List) para lograr una mayor flexibilidad de uso de tu 
@@ -90,7 +90,7 @@
 					</a>
 				</div>
 				<div class="three columns property">
-					<a href="<?php echo Fw_Router::getUrl('admin', 'config_crud') ?>">
+					<a href="<?php echo Fw_Router::getUrl('config', 'config_crud') ?>">
 						<h4>CRUD</h4>
 						<p>
 							Configura tus instancias de base de datos mediante la definición de su host, su user 

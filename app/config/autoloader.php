@@ -13,16 +13,15 @@
  *
  * @param string $classname
  */
-function __autoload($classname) {	
+function __autoload($classname) {
 	$classname = strtolower($classname);
 	preg_match_all('/[a-z]+/', $classname, $matches, PREG_SET_ORDER);
 	$count = count($matches);
 	$folder = $context = $name = $suffix = '';
-	
+
 	$libs = explode(' ', LIBS_ON);
-	foreach($libs as $lib)
-		if($in=stristr($matches[0][0], $lib)) break;
-	
+	foreach ($libs as $lib)
+	if ($in = stristr($matches[0][0], $lib))break;
 	if (!$in) {
 		switch (strtolower($matches[$count - 1][0])) {
 			case 'controller':
@@ -55,15 +54,30 @@ function __autoload($classname) {
 	} else {
 		$folder .= LIBS_PATH . DS;
 		$context = getContextPath($matches);
-		$name .= strtolower($matches[$count - 1][0]);
-		$suffix .= '.class.php';
+		$name .= strtolower($matches[$count - 1][0]);		
+		if ($lib == 'Fw') {
+			if ($context == 'fw' . DS) {
+				$context .= 'class' . DS;
+				$suffix .= '.class.php';
+			} else if (stristr($classname, 'controller')) {
+				$name = str_replace(DS, '', $context);
+				$name = str_replace('fw', '', $name);
+				$context = 'fw'.DS.'controller'.DS;
+				$suffix .= '.controller.php';
+			} else if (stristr($classname, 'model')) {				
+				$name = str_replace(DS, '', $context);
+				$name = str_replace('fw', '', $name);
+				$context = 'fw'.DS.'model'.DS; 
+				$suffix .= '.model.php';
+			}
+		}		
 	}
 
 	if (file_exists($folder . $context . $name . $suffix)) {
 		require_once ( $folder . $context . $name . $suffix );
 		return true;
-	} else if (file_exists($folder.$lib.DS.$matches[0][0].'.php')) {
-		require_once($folder.$lib.DS.$matches[0][0].'.php');		
+	} else if (file_exists($folder . $lib . DS . $matches[0][0] . '.php')) {
+		require_once($folder . $lib . DS . $matches[0][0] . '.php');
 		return true;
 	}
 	return false;
