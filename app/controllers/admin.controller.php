@@ -3,7 +3,6 @@ class Admin_Controller extends Fw_Controller{
 	public function __construct() {
 		$this->layout = 'admin';	
 	}
-	
 	public function config_acl(){
 		$acl_raw = parse_ini_file(CONFIG_PATH.DS.'acl.ini', true);
 		$controllers_list = Fw_Tools::getControllerList();

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<?php Fw_Module::getModule('head'); ?>
-	<body>
+	<body style="background-color: #222">
 		<div class="row">
 			<div class="grid_4">&nbsp;</div>
 			<div class="grid_4">&nbsp;</div>
@@ -9,21 +9,34 @@
 		</div>
 		<div class="row">
 			<div class="grid_4">&nbsp;</div>
-			<div class="grid_4">			
+			<div class="grid_4 panel" style="height:275px;margin-top:100px">			
+				<div class="row" style="margin-bottom:15px">
+					<div class="five columns centered">
+						<span class="logo-black" style="height: 75px"></span>
+					</div>
+				</div>
 				<form method="post">				
-					<div class="wrapper-block">
-						<label for="username">Username:</label>
-						<input  type="text" 
-								placeholder="Enter your username" 
-								name="username" autocomplete="off"/>
+					<div class="row collapse">
+						<div class="two mobile-one columns">
+							<span class="prefix">
+								<i class="general foundicon-smiley"></i>
+							</span>
+						</div>
+						<div class="ten mobile-three columns">
+							<input type="text" name="username" placeholder="Enter your username">
+						</div>
 					</div>
-					<div class="wrapper-block">
-						<label for="pwd">Password:</label>
-						<input  type="password"
-								placeholder="Enter your password" 
-								name="pwd" autocomplete="off"/>
-					</div>
-					<input type="submit" value="Login" class="submit btn-form" />
+					<div class="row collapse">
+						<div class="two mobile-one columns">
+							<span class="prefix">
+								<i class="general foundicon-lock"></i>
+							</span>
+						</div>
+						<div class="ten mobile-three columns">
+							<input type="text" name="pwd" placeholder="Enter your password">
+						</div>
+					</div>			
+					<input type="submit" value="Login" class="button right" />					
 				</form>				
 			</div>
 			<div class="grid_4">&nbsp;</div>

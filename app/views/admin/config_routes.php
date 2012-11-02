@@ -5,7 +5,7 @@ $controllers_list = Fw_Register::getRef('controllers_list');
 <script type="text/javascript">
 	var controllers_list = <?php echo json_encode($controllers_list)?>;
 	function getControllersSelect(controller){
-		var content = '<select name="controller">';
+		var content = '<select class="eight" name="controller">';
 		$.each(controllers_list, function(k,v){
 			name = k.charAt(0).toUpperCase() + k.slice(1) + '_Controller';
 			content += '<option value="'+name+'" '+((name==controller)?'selected="selected"':'')+'>'+k+'</option>';
@@ -14,7 +14,7 @@ $controllers_list = Fw_Register::getRef('controllers_list');
 		return content;
 	}
 	function getTasksSelect(controller,task){
-		var content = '<select name="task">';
+		var content = '<select class="eight" name="task">';
 		$.each(controllers_list, function(k,v){
 			c = k.charAt(0).toUpperCase() + k.slice(1) + '_Controller';
 			if(c == controller){
@@ -31,17 +31,17 @@ $controllers_list = Fw_Register::getRef('controllers_list');
 	$(document).ready(function(){
 		$('span.delete').live('click',function(){			
 			if(confirm('Are you shure that you would delete this item?')){
-				$(this).parents().filter('div.route').remove();
+				$(this).parents().filter('li.route').remove();
 			}
 		});
 		$('span.add').live('click',function(){
-			addRoute($(this).parents().filter('div.add-item').children().filter('input[name=route]').val(),{},true);			
+			addRoute($(this).parents().find('div.add-item').children().find('input[name=route]').val(),{},true);			
 		});		
 		$('#save').live('click',function(){
 			var content = '<'+'?'+'php'+"\n";
 			content += "$routes = array ( \n";
-			$('div.route').each(function(){				
-				content += "\t"+'"'+$(this).children().filter('h3').text()+'"'+' => array ('+"\n";
+			$('li.route').each(function(){				
+				content += "\t"+'"'+$(this).children().find('h5').text()+'"'+' => array ('+"\n";
 				content += "\t\t"+'"controller" => "'+$(this).children().find('select[name=controller]').val()+'",'+"\n";
 				content += "\t\t"+'"url" => "'+$(this).children().find('input[name=url]').val()+'",'+"\n";
 				content += "\t\t"+'"regex" => "/'+($(this).children().find('input[name=url]').val()).replace(/\//g, '\\/')+'/",'+"\n";
@@ -51,7 +51,7 @@ $controllers_list = Fw_Register::getRef('controllers_list');
 				content += "\t\t"+'"cacheable" => '+$(this).children().find('input[name=cacheable]').is(':checked')+"\n";
 				content += "\t),\n";
 			});
-			content += ");\n";
+			content += ");\n";			
 			$.ajax({
 				type:"POST",
 				url:'<?php echo Fw_Router::getUrl("admin", "ajax") ?>',
@@ -74,34 +74,36 @@ $controllers_list = Fw_Register::getRef('controllers_list');
 			values.task				= (typeof values.task					!= "undefined")?values.task					:'';
 			values.cacheable	= (typeof values.cacheable		!= "undefined")?values.cacheable		:false;			
 			var div = '';
-			div += '<div class="route">';
-			div += '<h3 style="display:inline-block">'+route+'</h3>';
-			div += '<a href="#"><span class="delete instance"/></a>';
+			div += '<li class="route">';
+			div += '<div class="panel">';
+			div += '<h5 style="display:inline-block">'+route+'</h5>';
+			div += '<a href="#"><span class="general foundicon-remove right delete"/></a>';
 			div += '<div>';
 			div += '	<ul class="route">';
-			div += '		<li>';
-			div += '			<label for="controller">Controller:</label>';
+			div += '		<div class="row collapse">';
+			div += '			<div class="four columns"><span class="prefix">Controller</span></div>';
 			div += '			'+getControllersSelect(values.controller);
-			div += '		</li>';
-			div += '		<li>';
-			div += '			<label for="url">URL:</label>';
-			div += '			<input type="text" name="url" placeholder="login" value="'+values.url+'"/>';
-			div += '		</li>';
-			div += '		<li>';
-			div += '			<label for="resource">Resource:</label>';
-			div += '			<input type="text" name="resource" placeholder="auth" value="'+values.resource+'"/>';
-			div += '		</li>';
-			div += '		<li>';
-			div += '			<label for="task">Task:</label>';
+			div += '		</div>';
+			div += '		<div class="row collapse">';
+			div += '			<div class="four columns"><span class="prefix">URL</span></div>';
+			div += '			<input class="eight" type="text" name="url" placeholder="login" value="'+values.url+'"/>';
+			div += '		</div>';
+			div += '		<div class="row collapse">';
+			div += '			<div class="four columns"><span class="prefix">Resource</span></div>';
+			div += '			<input class="eight" type="text" name="resource" placeholder="auth" value="'+values.resource+'"/>';
+			div += '		</div>';
+			div += '		<div class="row collapse">';
+			div += '			<div class="four columns"><span class="prefix">Task</span></div>';
 			div += '			'+getTasksSelect(values.controller, values.task);
-			div += '		</li>';
-			div += '		<li>';
-			div += '			<label for="cacheable">Cacheable:</label>';
+			div += '		</div>';
+			div += '		<div class="row collapse">';
 			div += '			<input type="checkbox" name="cacheable"'+((values.cacheable)?'checked="checked"':'')+'"/>';
-			div += '		</li>';
+			div += '			Cacheable';
+			div += '		</div>';
 			div += '	</ul>';
 			div += '</div>';		
-			div += '</div>';
+			div += '</div>';		
+			div += '</li>';
 			if(prepend){
 				$('#routes').prepend(div);
 			} else {
@@ -114,11 +116,19 @@ $controllers_list = Fw_Register::getRef('controllers_list');
 	});
 </script>
 <div id="configuration">
-	<h2>Configuration</h2>
-	<div class="add-item">
-		<input type="text" name="route" placeholder="Ex: Local"/>
-		<a href="#"><span class="add"/></a>
+	<h4>Configuration</h4>
+	<div class="row add-item collapse">								
+		<div class="four columns">
+			<div class="ten columns">
+				<input type="text" name="route" placeholder="Ej: Local"/>
+			</div>
+			<div class="two columns">
+				<span class="postfix">
+					<a href="#" id="add instance"><span class="general foundicon-plus add"></a>
+				</span>
+			</div>
+		</div>
 	</div>
-	<div id="routes"></div>
+	<ul id="routes" class="block-grid three-up"></ul>
 </div>
-<a href="#" class="submit btn-form" id="save">Save</a>
+<div class="row"><a href="#" class="medium button" id="save">Save</a></div>

@@ -6,8 +6,7 @@ abstract class Fw_View {
 		require_once LAYOUTS_PATH . DS . $layout . '.php';
 	}
 
-	public static function displayEditInputs($oResult, $oParams) {
-		echo '<pre>';		
+	public static function displayEditInputs($oResult, $oParams) {		
 		$html = '';
 		foreach ($oParams as $label => $attr) {
 			$comment = (isset($attr['comment']))?'<span class="small-label">'.$attr['comment'].'</span>':'';

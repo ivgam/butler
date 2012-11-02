@@ -5,38 +5,40 @@ $delete_route = Fw_Router::getUrl($resource, 'delete');
 $oResult = Fw_Register::getRef('oResult');
 $oParams = Fw_Register::getRef('oParams');
 ?>
-<form id="mainform" action="">
-	<table>
+<h4>Admin <?php echo ucfirst($resource)?></h4>
+<div class="row">
+	<table class="eleven columns centered">
 		<tr>
 			<?php foreach ($oParams as $header => $fieldname) { ?>
-				<th class="highlight"><?php echo $header ?></th>
+				<th><?php echo $header ?></th>
 			<?php } ?>		
-				<th class="highlight"></th>
+			<th></th>
 		</tr>
-		<?php foreach ($oResult as $oRow) {	?>
+		<?php foreach ($oResult as $oRow) { ?>
 			<tr>
-				<?php							
-					foreach ($oParams as $header => $fieldname) { ?>
-						<td><?php echo (isset($oRow[$fieldname]))?$oRow[$fieldname]:''; ?></td>
-					<?php } ?>
-					<td>
-						<a href="<?php echo $edit_route . $oRow['id'] ?>" 	title="edit"><span class="edit"/></a>
-						<a href="<?php echo $delete_route . $oRow['id'] ?>" title="delete"><span class="delete"/></a>
-					</td>
+				<?php foreach ($oParams as $header => $fieldname) { ?>
+					<td><?php echo (isset($oRow[$fieldname])) ? $oRow[$fieldname] : ''; ?></td>
+				<?php } ?>
+				<td class="one">
+					<a href="<?php echo $edit_route . $oRow['id'] ?>" title="edit"><span class="general foundicon-edit"></span></a>
+					<a href="<?php echo $delete_route . $oRow['id'] ?>" title="delete"><span class="general foundicon-remove"></span></a>
+				</td>
 			</tr>
 		<?php } ?>
 	</table>
-	<div class="clear"></div>
-	<table border="0" cellpadding="0" cellspacing="0" id="paging-table">
-		<tr>
-			<td>
-				<a href="" class="page-far-left"></a>
-				<a href="" class="page-left"></a>
-				<div id="page-info">Page <strong>1</strong> / 15</div>
-				<a href="" class="page-right"></a>
-				<a href="" class="page-far-right"></a>
-			</td>
-		</tr>
-	</table>
-	<div class="clear"></div>
-</form>
+</div>
+<div class="row">
+	<div class="four columns centered" style="margin-top:25px">
+		<ul class="pagination">
+			<li class="arrow unavailable"><a href="">&laquo;</a></li>
+			<li class="current"><a href="">1</a></li>
+			<li><a href="">2</a></li>
+			<li><a href="">3</a></li>
+			<li><a href="">4</a></li>
+			<li class="unavailable"><a href="">&hellip;</a></li>
+			<li><a href="">12</a></li>
+			<li><a href="">13</a></li>
+			<li class="arrow"><a href="">&raquo;</a></li>
+		</ul>
+	</div>
+</div>

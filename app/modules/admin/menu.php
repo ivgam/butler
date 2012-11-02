@@ -1,13 +1,18 @@
 <?php $admin_controllers = Fw_Register::getRef('admin_controllers');?>
-<div class="highlight" >Admin</div>
+<!--h5><a href="#">Admin</a></h5-->
+<dl class="vertical tabs">
 <?php foreach($admin_controllers as $controller){?>
-<div <?php if($controller == Fw_Register::getRef('current_resource'))echo 'class="current"'?>>
-	<?php echo ucfirst($controller)?>
-	<a href="<?php echo Fw_Router::getUrl($controller, 'add')?>"><span class="add right"/></a>	
-	<a href="<?php echo Fw_Router::getUrl($controller, 'admin')?>"><span class="admin right"/></a>	
-</div>
+<dd <?php if($controller == Fw_Register::getRef('current_resource'))echo 'class="active"'?>>	
+	<a href="<?php echo Fw_Router::getUrl($controller, 'admin')?>">
+		<?php echo ucfirst($controller)?>		
+		<span class="general foundicon-website"></span>
+	</a>
+</dd>
 <?php } ?>
-<div class="highlight">Config</div>
+</dl>
+<!--
+<h5><a href="#">Config</a></h5>
+<dl class="vertical tabs">
 <?php 
 	$methods = get_class_methods('Admin_Controller');
 	foreach ($methods as $method) {
@@ -15,13 +20,15 @@
 			$name = ucfirst(str_replace('config_', '', $method));
 			$route = Fw_Router::getUrl('admin',$method);
 			?>
-			<div <?php if($method == Fw_Register::getRef('current_task')) echo 'class="current"'?>>
-				<?php echo $name ?>
+			<dd <?php if($method == Fw_Register::getRef('current_task')) echo 'class="active"'?>>
 				<a href="<?php echo $route?>">
-					<span class="config right"/>
+					<?php echo $name ?>
+					<span class="general foundicon-settings"></span>
 				</a>
-			</div>
+			</dd>
 			<?php
 		}
 	}
 ?>
+</dl>
+-->

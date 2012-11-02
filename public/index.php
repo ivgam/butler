@@ -9,13 +9,13 @@ define('PUBLIC_PATH'			, dirname(__FILE__));
 define('APP_PATH'                       , PUBLIC_PATH.DS.'..'.DS.'app');
 define('LIBS_PATH'			, PUBLIC_PATH.DS.'..'.DS.'libs');
 
-define('JS_PATH'			, PUBLIC_PATH.DS.'js');
-define('CSS_PATH'			, PUBLIC_PATH.DS.'css');
-define('IMG_PATH'			, PUBLIC_PATH.DS.'imgs');
+define('JS_PATH'			, PUBLIC_PATH.DS.'javascripts');
+define('CSS_PATH'			, PUBLIC_PATH.DS.'stylesheets');
+define('IMG_PATH'			, PUBLIC_PATH.DS.'images');
 
 define('BASE_URI'			, str_replace('index.php', '', $_SERVER['SCRIPT_NAME']));
-define('JS_URI'				, BASE_URI.'js/');
-define('CSS_URI'			, BASE_URI.'css/');
+define('JS_URI'				, BASE_URI.'javascripts/');
+define('CSS_URI'			, BASE_URI.'stylesheets/');
 define('IMG_URI'			, BASE_URI.'images/');
 
 define('CONTROLLERS_PATH'		, APP_PATH.DS.'controllers');

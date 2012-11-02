@@ -1,6 +1,6 @@
-<?php 
-	$acl_raw = Fw_Register::getRef('acl_raw');	
-	$controllers_list = Fw_Register::getRef('controllers_list');
+<?php
+$acl_raw = Fw_Register::getRef('acl_raw');
+$controllers_list = Fw_Register::getRef('controllers_list');
 ?>
 <script type="text/javascript">	
 	var resource_methods = {};
@@ -12,65 +12,53 @@
 			}
 		});
 		$('#add-role').live('click',function(){
-			var role = $(this).parents().filter('div.add-item').children().filter('input[name=name]').val();
-			var parent = $(this).parents().filter('div.add-item').children().filter('select[name=role]').val();
+			var role = $(this).parents().filter('div.add-item').children().find('input[name=name]').val();
+			var parent = $(this).parents().filter('div.add-item').children().find('select[name=role]').val();
 			var tr  ='<tr>';
-				tr +='<td class="name">';
-				tr +=role;
-				tr +='</td>';
-				tr +='<td class="parent">';
-				tr += parent;
-				tr +='</td>';
-				tr +='<td>';
-				tr +='<a href="#" title="delete">';
-				tr +='<span class="delete"/>';
-				tr +='</a>';
-				tr +='</td>';
-				tr +='</tr>';
+			tr +='<td class="name">';
+			tr +=role;
+			tr +='</td>';
+			tr +='<td class="parent">';
+			tr += parent;
+			tr +='</td>';			
+			tr +='<td><a href="#"	title="delete"><span class="general foundicon-remove right"/></a></td>';			
+			tr +='</tr>';
 			$('#roles').append(tr);
 			updateRoleSelect();
 		});
-		$('#add-resource').live('click',function(){
-			var resource = $(this).parents().filter('div.add-item').children().filter('input[name=resource]').val();			
+		$('#add-resource').live('click',function(){			
+			var resource = $(this).parents().filter('div.add-item').children().find('input[name=resource]').val();						
 			var tr  ='<tr>';
-				tr +='<td class="resource">';
-				tr +=resource;
-				tr +='</td>';
-				tr +='<td>';
-				tr +='<a href="#" title="delete">';
-				tr +='<span class="delete"/>';
-				tr +='</a>';
-				tr +='</td>';
-				tr +='</tr>';
+			tr +='<td class="resource">';
+			tr +=resource;
+			tr +='</td>';			
+			tr +='<td><a href="#"	title="delete"><span class="general foundicon-remove right"/></a></td>';			
+			tr +='</tr>';
 			$('#resources').append(tr);
 			updateSubresourcesSelect();
 			updateResourceMethods();
 			updateResourceSelect();
 		});
 		$('#add-permission').live('click',function(){
-			var role = $(this).parents().filter('div.add-item').children().filter('select[name=role]').val();
-			var resource = $(this).parents().filter('div.add-item').children().filter('select[name=resource]').val();			
-			var method = $(this).parents().filter('div.add-item').children().filter('select[name=method]').val();			
-			var access = $(this).parents().filter('div.add-item').children().filter('select[name=access]').val();			
+			var role = $(this).parents().filter('div.add-item').children().find('select[name=role]').val();
+			var resource = $(this).parents().filter('div.add-item').children().find('select[name=resource]').val();			
+			var method = $(this).parents().filter('div.add-item').children().find('select[name=method]').val();			
+			var access = $(this).parents().filter('div.add-item').children().find('select[name=access]').val();			
 			var tr  ='<tr>';
-				tr +='<td class="role">';
-				tr +=role;
-				tr +='</td>';
-				tr +='<td class="resource">';
-				tr +=resource;
-				tr +='</td>';
-				tr +='<td class="method">';
-				tr +=method;
-				tr +='</td>';
-				tr +='<td class="access">';
-				tr +=access;
-				tr +='</td>';
-				tr +='<td>';
-				tr +='<a href="#" title="delete">';
-				tr +='<span class="delete"/>';
-				tr +='</a>';
-				tr +='</td>';
-				tr +='</tr>';
+			tr +='<td class="role">';
+			tr +=role;
+			tr +='</td>';
+			tr +='<td class="resource">';
+			tr +=resource;
+			tr +='</td>';
+			tr +='<td class="method">';
+			tr +=method;
+			tr +='</td>';
+			tr +='<td class="access">';
+			tr +=access;
+			tr +='</td>';			
+			tr +='<td><a href="#"	title="delete"><span class="general foundicon-remove right"/></a></td>';			
+			tr +='</tr>';
 			$('#permissions').append(tr);
 			updateSubresourcesSelect();
 		});
@@ -86,10 +74,10 @@
 			var resources = getResources();
 			var subresources = getSubresources();
 			var permissions = getPermissions();
-			var acl = roles+"\n"+resources+"\n"+subresources+"\n"+permissions;
+			var acl = roles+"\n"+resources+"\n"+subresources+"\n"+permissions;			
 			$.ajax({
 				type:"POST",
-				url:'<?php echo Fw_Router::getUrl("admin","ajax")?>',
+				url:'<?php echo Fw_Router::getUrl("admin", "ajax") ?>',
 				data:{'action':'acl', 'content':acl},
 				dataType:'json',
 				success: function(data){
@@ -100,7 +88,7 @@
 		function getRoles(){
 			var to_return = "[roles]\n";
 			$('#roles tr td.name').each(function(){
-				to_return += $(this).text()+' = "'+$(this).parent().children().filter('td.parent').text()+'"'+"\n";				
+				to_return += $(this).text()+' = "'+$(this).parent().children().find('td.parent').text()+'"'+"\n";				
 			});
 			return to_return;
 		}
@@ -113,8 +101,8 @@
 		}
 		function getSubresources(){
 			var to_return = "[subresources]\n";
-			$('ul.controllers li label').each(function(){				
-				to_return += $(this).text().replace(':','')+' = "'+$(this).parent().children().filter('select').val()+'"'+"\n";				
+			$('ul.controllers li span.prefix').each(function(){
+				to_return += $(this).text().replace(':','')+' = "'+$(this).parents().filter('li').children().find('select').val()+'"'+"\n";				
 			});
 			return to_return;
 		}
@@ -135,7 +123,7 @@
 			return to_return;
 		}
 		function init(){
-			resource_methods = <?php echo json_encode($controllers_list)?>;
+			resource_methods = <?php echo json_encode($controllers_list) ?>;
 			updateRoleSelect();
 			updateSubresourcesSelect();
 			updateResourceMethods();	
@@ -143,16 +131,16 @@
 			filterValidPermissions();
 		}
 		function updateSubresourcesSelect(){
-			$('ul.controllers select[name^=controller-]').html('');			
+			$('select[name^=controller-]').html('');			
 			$('#resources tr td.resource').each(function(){				
 				var option = '<option value="'+$(this).text()+'">'+$(this).text()+'</option>';			
-				$('ul.controllers select[name^=controller-]').append(option);						
+				$('select[name^=controller-]').append(option);						
 			});
 			setDefaultSubresourcesValue();
 		}
 		function setDefaultSubresourcesValue(){
-			<?php foreach($acl_raw['subresources'] as $controller=>$resource){ ?>
-				$('select[name=controller-<?php echo $controller?>]').val('<?php echo $resource?>');
+			<?php foreach ($acl_raw['subresources'] as $controller => $resource) { ?>
+				$('select[name=controller-<?php echo $controller ?>]').val('<?php echo $resource ?>');
 			<?php } ?>
 		}
 		function updateResourceSelect(){
@@ -216,98 +204,135 @@
 	});
 </script>
 <div class="config">
-	<div style="clear:both;overflow:hidden;display:block">
-		<div class="col1">
-			<h2>1. Roles</h2>
-			<div class="overflow">
-				<div class="add-item">
-					<input type="text" name="name" placeholder="Ej: Guest"/>
-					<select name="role" id="parent_role">
-						<option>No Parent</option>
-					</select>
-					<a href="#" id="add-role"><span class="add">&nbsp;</a>
-				</div>
-				<table class="minify" id="roles">
-					<tr>		
-						<th class="highlight">Name</th>			
-						<th class="highlight">Parent</th>
-						<th class="highlight"></th>
-					</tr>
-					<?php foreach ($acl_raw['roles'] as $role=>$parent) { ?>
-					<tr>
-						<td class="name"><?php echo $role?></td>
-						<td class="parent"><?php echo $parent?></td>
-						<td><a href="#"	title="delete"><span class="delete"/></a></td>
-					</tr>
-					<?php } ?>
-				</table>
-			</div>
-			<h2>3. Subresources</h2>
-			<ul class="controllers">
-				<?php foreach($controllers_list as $controller => $methods){?>
-				<li>
-					<label for="controller-<?php echo $controller?>"><?php echo $controller?>:</label>
-					<select name="controller-<?php echo $controller?>"></select>
-				</li>
-				<?php }?>
-			</ul>
-		</div>
-		<div class="col2">
-			<h2>2. Resources</h2>
-			<div class="overflow">
-				<div class="add-item">
-					<input type="text" name="resource" placeholder="Ej: Static"/>
-					<a href="#" id="add-resource"><span class="add">&nbsp;</a>
-				</div>
-				<table class="minify" id="resources">
-					<tr>			
-						<th class="highlight">Name</th>			
-						<th class="highlight"></th>
-					</tr>
-					<?php foreach ($acl_raw['resources'] as $name=>$void) {	?>
-					<tr>
-						<td class="resource"><?php echo $name?></td>			
-						<td><a href="#"	title="delete"><span class="delete"/></a></td>
-					</tr>
-					<?php } ?>
-				</table>
-			</div>
-			<h2>4. Permissions</h2>
-			<div class="overflow">
-				<div class="add-item">			
-					<select name="role"></select>
-					<select name="resource" id="permission_resource"></select>
-					<select name="method" id="permission_method"></select>
-					<select name="access">
-						<option value="allow">allow</option>
-						<option value="allow">deny</option>
-					</select>
-					<a href="#" id="add-permission"><span class="add">&nbsp;</a>
-				</div>
-				<table class="minify" id="permissions">
-					<tr>
-						<th class="highlight">Role</th>			
-						<th class="highlight">Resource</th>
-						<th class="highlight">Method</th>
-						<th class="highlight">Access</th>
-						<th class="highlight"></th>
-					</tr>
-					<?php			
-					foreach ($acl_raw['roles'] as $role=>$parent) {
-						foreach($acl_raw[$role] as $chain => $access){					
-							list($role, $resource, $method) = explode('.', $chain);
-						?>
-						<tr>
-							<td class="role"><?php echo $role?></td>
-							<td class="resource"><?php echo $resource?></td>
-							<td class="method"><?php echo $method?></td>
-							<td class="access"><?php echo $access?></td>
-							<td><a href="#"	title="delete"><span class="delete"/></a></td>
+	<div class="row">	
+		<div class="nine columns centered">
+			<div class="row">
+				<div class="five columns">
+					<h4>1. Roles</h4>				
+					<div class="row add-item collapse">
+						<div class="six columns">
+							<input type="text" name="name" placeholder="Ej: Guest"/>
+						</div>
+						<div class="four columns">
+							<select name="role" id="parent_role">
+								<option>No Parent</option>
+							</select>
+						</div>				
+						<div class="two columns">
+							<span class="postfix">
+								<a href="#" id="add-role"><span class="general foundicon-plus"></a>
+							</span>
+						</div>				
+					</div>
+					<table id="roles" class="twelve">
+						<tr>		
+							<th>Name</th>			
+							<th>Parent</th>
+							<th></th>
 						</tr>
-					<?php } }?>						
-				</table>
+						<?php foreach ($acl_raw['roles'] as $role => $parent) { ?>
+							<tr>
+								<td class="name"><?php echo $role ?></td>
+								<td class="parent"><?php echo $parent ?></td>
+								<td><a href="#"	title="delete"><span class="general foundicon-remove right"/></a></td>
+							</tr>
+						<?php } ?>
+					</table>				
+				</div>
+				<div class="two columns"></div>
+				<div class="five columns">
+					<h4>2. Resources</h4>				
+					<div class="row add-item">						
+						<div class="row collapse">
+							<div class="ten columns">
+								<input type="text" name="resource" placeholder="Ej: Static"/>
+							</div>
+							<div class="two columns">
+								<span class="postfix">
+									<a href="#" id="add-resource"><span class="general foundicon-plus"></a>
+								</span>
+							</div>
+						</div>						
+					</div>
+					<div class="row">
+						<table id="resources" class="twelve">
+							<tr>			
+								<th>Name</th>			
+								<th></th>
+							</tr>
+							<?php foreach ($acl_raw['resources'] as $name => $void) { ?>
+								<tr>
+									<td class="resource"><?php echo $name ?></td>			
+									<td><a href="#"	title="delete"><span class="general foundicon-remove right"/></a></td>
+								</tr>
+							<?php } ?>
+						</table>				
+					</div>
+				</div>			
 			</div>
+			<div class="row">
+				<div class="five columns">
+					<h4>3. Subresources</h4>			
+					<ul class="block-grid two-up controllers">
+						<?php foreach ($controllers_list as $controller => $methods) { ?>					
+							<li>
+								<div class="row collapse">
+									<div class="four columns">
+										<span class="prefix"><?php echo $controller ?></span>
+									</div>
+									<select name="controller-<?php echo $controller ?>" class="eight"></select>					
+								</div>
+							</li>
+						<?php } ?>			
+					</ul>
+				</div>			
+				<div class="two columns"></div>
+				<div class="five columns">
+					<h4>4. Permissions</h4>			
+					<div class="add-item row collapse">			
+						<div class="two columns"><select name="role"></select></div>
+						<div class="three columns"><select name="resource" id="permission_resource"></select></div>
+						<div class="three columns"><select name="method" id="permission_method"></select></div>
+						<div class="two columns">
+							<select name="access">
+								<option value="allow">allow</option>
+								<option value="allow">deny</option>
+							</select>
+						</div>
+						<div class="two columns">
+							<span class="postfix">
+								<a href="#" id="add-permission"><span class="general foundicon-plus"></a>
+							</span>
+						</div>			
+					</div>
+					<table id="permissions" class="twelve">
+						<tr>
+							<th>Role</th>			
+							<th>Resource</th>
+							<th>Method</th>
+							<th>Access</th>
+							<th></th>
+						</tr>
+						<?php
+						foreach ($acl_raw['roles'] as $role => $parent) {
+							foreach ($acl_raw[$role] as $chain => $access) {
+								list($role, $resource, $method) = explode('.', $chain);
+								?>
+								<tr>
+									<td class="role"><?php echo $role ?></td>
+									<td class="resource"><?php echo $resource ?></td>
+									<td class="method"><?php echo $method ?></td>
+									<td class="access"><?php echo $access ?></td>
+									<td><a href="#"	title="delete"><span class="general foundicon-remove right"/></a></td>
+								</tr>
+								<?php
+							}
+						}
+						?>						
+					</table>			
+				</div>
+			</div>
+			<div class="row"><a href="#" class="medium button right" id="save">Save</a></div>
 		</div>
 	</div>
-	<a href="#" class="submit btn-form" id="save">Save</a>
 </div>
