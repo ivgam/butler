@@ -137,7 +137,3 @@
 		});
 	});
 </script>
-<style>
-	.top-bar{margin-bottom:0;}	
-	#admin_menu{padding:0}
-</style>

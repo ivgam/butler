@@ -20,6 +20,8 @@ select:focus{ background: #fafafa; outline: none !important; border-color: #b3b3
 select[disabled]{ background-color: #ddd; }
 .logo-black{background: url('../images/logo_black.png') no-repeat; background-size: 100%;display:block;}
 .logo-white{background: url('../images/logo_white.png') no-repeat; background-size: 100%;display:block;}
+.top-bar{margin-bottom:0;}	
+#admin_menu{padding:0}
 
 /* -----------------------------------------
    Page Name 1
