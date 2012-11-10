@@ -33,3 +33,4 @@ Collaborators
 
 Copyright and license
 ---------------------
+This softwares don't have yet any copyright or license.

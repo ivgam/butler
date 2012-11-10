@@ -53,7 +53,7 @@
 		<div class="container" style="background-color: #222; margin:26px 0; padding:20px 0">
 			<!-- Call to Action Panel -->
 			<div class="row">
-				<img src="<?php echo IMG_URI?>technologies.png"/>
+				<img src="<?php echo IMG_URI?>technologies_color.png"/>
 			</div>
 		</div>
 		<div class="container" style="background-color: #444">
