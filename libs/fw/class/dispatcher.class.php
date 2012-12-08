@@ -27,9 +27,9 @@ class Fw_Dispatcher {
 			echo $html;
 		}			
 		Fw_Register::setRef('end_time', microtime());
-		if(DEBUG_MODE){			
+		if(DEBUG_MODE){		
 			ob_start();
-			include LIBS_PATH.DS.'fw'.DS.'debugtoolbar.inc.php';
+			include LIBS_PATH.DS.'fw'.DS.'inc'.DS.'debugtoolbar.inc.php';
 			$debug = ob_get_contents();
 			ob_end_clean();
 			echo $debug;

@@ -1,17 +1,41 @@
 <script type="text/javascript">
-$(document).ready(function(){
-	$('a[class$=button]').click(function(){
-		$(this).parent().css('display','none');
-		var tmp = $(this).attr('id').toString().replace('button','form');
-		$('#'+tmp).css('display','block');
-		if(tmp.indexOf('table', 0) != -1){
-			$('#relationships-form').css('display','block');
+	$(document).ready(function(){
+		var breadcrumb = ['what-would-to-do'];
+		var index = 0;
+		function showLastTable(id){
+			if(id.indexOf('table', 0) != -1){
+				$('#relationships-form').css('display','block');
+			} else {
+				$('#relationships-form').css('display','none');
+			}
 		}
+		$('a[class$=button]').click(function(){
+			index++;
+			$(this).parent().css('display','none');
+			var tmp = $(this).attr('id').toString().replace('button','form');
+			breadcrumb[index] = tmp;
+			$('#'+tmp).css('display','block');
+			showLastTable(tmp);
+		});
+		$('.prev').click(function(){
+			$('#'+breadcrumb[index]).css('display','none');
+			index--;
+			$('#'+breadcrumb[index]).css('display','block');
+			showLastTable(breadcrumb[index]);
+		});
+		$('.next').click(function(){
+			$('#'+breadcrumb[index]).css('display','none');
+			index++;
+			$('#'+breadcrumb[index]).css('display','block');
+		});
 	});
-});
 </script>
 <div id="configuration">
-	<h4>CRUD</h4>		
+	<h4>
+		CRUD
+		<a href="#" class="prev">Prev</a>
+		<a href="#" class="next">Next</a>
+	</h4>		
 	<div class="row" id="what-would-to-do">
 		<h5>What do you would to do?</h5>
 		<a href="#" class="medium button" id="new-controller-button">Create New Controller</a>
