@@ -3,14 +3,29 @@ $resource = Fw_Register::getRef('current_resource');
 $edit_route = Fw_Router::getUrl($resource, 'edit');
 $delete_route = Fw_Router::getUrl($resource, 'delete');
 $oResult = Fw_Register::getRef('oResult');
+$count = Fw_Register::getRef('count');
 $oParams = Fw_Register::getRef('oParams');
+$request = Fw_Filter::getArray('request');
+$filters = Fw_Filter::getFilters();
 ?>
+<!--
 <h4>Admin <?php echo ucfirst($resource)?></h4>
+<br/>
+-->
+<form name="results" method="POST">
+<input type="submit" style="visibility: hidden;" />
 <div class="row">
 	<table class="eleven columns centered">
 		<tr>
 			<?php foreach ($oParams as $header => $fieldname) { ?>
 				<th><?php echo $header ?></th>
+			<?php } ?>		
+			<th></th>
+		</tr>
+		<tr>
+			<?php foreach ($oParams as $header => $fieldname) { ?>
+			<td><input type="text" name="filter_<?php echo $fieldname?>"
+								 value="<?php echo (isset($request['filter_'.$fieldname]))?$request['filter_'.$fieldname]:''?>"/></td>
 			<?php } ?>		
 			<th></th>
 		</tr>
@@ -27,18 +42,5 @@ $oParams = Fw_Register::getRef('oParams');
 		<?php } ?>
 	</table>
 </div>
-<div class="row">
-	<div class="four columns centered" style="margin-top:25px">
-		<ul class="pagination">
-			<li class="arrow unavailable"><a href="">&laquo;</a></li>
-			<li class="current"><a href="">1</a></li>
-			<li><a href="">2</a></li>
-			<li><a href="">3</a></li>
-			<li><a href="">4</a></li>
-			<li class="unavailable"><a href="">&hellip;</a></li>
-			<li><a href="">12</a></li>
-			<li><a href="">13</a></li>
-			<li class="arrow"><a href="">&raquo;</a></li>
-		</ul>
-	</div>
-</div>
+</form>
+<?php Fw_Module::getModule('paginator', array('page' => $request['p'], 'count'=>$count, 'params'=>$filters)) ?>

@@ -18,6 +18,9 @@ class Bootstrap {
 		define('MINIFY_JS', false);
 		define('MINIFY_CSS', false);
 		define('ENVIRONMENT', 'test');
+		define('ITEMS_PER_PAGE', 20);
+		$_REQUEST['p'] = (isset($_REQUEST['p']))?(int)$_REQUEST['p']:0;
+		define('ITEMS_OFFSET', ITEMS_PER_PAGE * max(array(0,($_REQUEST['p'] - 1))));
 		
 		$conf = parse_ini_file(CONFIG_PATH . DS . 'configuration.ini', true);
 		$conf_array = array();

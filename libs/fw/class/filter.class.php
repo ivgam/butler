@@ -48,6 +48,18 @@ class Fw_Filter{
 		}
 	}
 	
+	public static function getFilters() {
+		$filters = array();
+		foreach (self::$aVars['request'] as $k => $v) {
+			if ($filter = strstr($k, 'filter_')) {
+				if ($v != '') {
+					$filters[$filter] = $v;
+				}
+			}
+		}
+		return $filters;
+	}
+	
 	public static function getArray($container){
 		return self::$aVars[$container];
 	}
