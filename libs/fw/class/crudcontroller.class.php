@@ -11,7 +11,8 @@ abstract class Fw_CrudController extends Fw_Controller {
 		$this->layout = 'admin';
 		$oModel = new $this->model;
 		$oResult = $oModel->getData();
-		Fw_Register::setRef('oResult', $oResult);
+		Fw_Register::setRef('oResult', $oResult['rows']);
+		Fw_Register::setRef('count', $oResult['total']);
 		Fw_Register::setRef('oParams', $this->adminParams);		
 		parent::display('admin', true, 'crud');
 	}
