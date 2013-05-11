@@ -28,6 +28,12 @@ Authors
 **Iván García**
 + http://github.com/ivgam
 
+**Pedro Aspiazu**
++ https://github.com/pedroaspiazu
+
+**Joan Masó**
++ https://github.com/Leboski
+
 Collaborators
 -------------
 

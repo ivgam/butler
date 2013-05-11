@@ -1,1 +1,0 @@
-<?php class Post_Controller extends Fw_Post_Controller{}?>

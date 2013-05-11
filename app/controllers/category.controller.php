@@ -1,1 +1,0 @@
-<?php class Category_Controller extends Fw_Category_Controller{} ?>

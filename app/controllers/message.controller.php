@@ -1,1 +1,0 @@
-<?php class Message_Controller extends Fw_Message_Controller{} ?>
