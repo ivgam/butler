@@ -1,6 +1,10 @@
 <meta charset="utf-8">
+<<<<<<< HEAD
 <title><?= COMPANY_NAME ?>: Admin</title>
 <link rel="shortcut icon" href="<?= PUBLIC_URI?>favicon.ico">
+=======
+<title>Butler: Admin</title>
+>>>>>>> e9b6a406a4cdf7bd79b4deb817f8b33ce0720f2a
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
