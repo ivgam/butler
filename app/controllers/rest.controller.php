@@ -1,1 +1,0 @@
-<?php class Rest_Controller extends Fw_Rest_Controller{} ?>

@@ -1,6 +1,5 @@
 <?php
-	Fw_CCC::addFrontJs('http://'.$_SERVER['SERVER_NAME'].JS_URI.'modernizr.foundation.js');
-	Fw_CCC::addFrontJs('http://'.$_SERVER['SERVER_NAME'].JS_URI.'jquery.js');
-	Fw_CCC::addFrontJs('http://'.$_SERVER['SERVER_NAME'].JS_URI.'foundation.min.js');
-	Fw_CCC::addFrontJs('http://'.$_SERVER['SERVER_NAME'].JS_URI.'app.js');
+Fw_CCC::addFrontJs(PUBLIC_URI . 'bootstrap/js/bootstrap.min.js');
+Fw_CCC::addFrontJs(JS_URI . 'json2.js');
+Fw_CCC::addFrontJs(JS_URI . 'jquery.cookie.js');
 ?>

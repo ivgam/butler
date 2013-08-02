@@ -1,3 +1,4 @@
-<div class="row" id="footer">	
-	<div class="grid_12" id="footer-left"></div>	
+<hr>
+<div class="footer">
+    <p>&copy; Company <?php echo date('Y') ?></p>
 </div>

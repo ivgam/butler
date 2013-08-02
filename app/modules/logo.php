@@ -1,1 +1,0 @@
-<h1><img src="http://placehold.it/400x100&text=Logo" /></h1>

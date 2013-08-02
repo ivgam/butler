@@ -1,15 +1,11 @@
-<?php 
-if(!isset($_GET['tpl'])){
-//include('banded.php');
-//include('banner.php');
-include('blog.php');
-//include('contact.php');
-//include('feed.php');
-//include('grid.php');
-//include('index.php');
-//include('orbit.php');
-//include('sidebar.php');
-} else {
-	include($_GET['tpl'].'.php');
-}
-?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <?php Fw_Module::getModule('head');?>
+  </head>
+  <body>
+    <?php echo $html?>
+    <?php Fw_CCC::getAllFrontJs()?>
+	<?php Fw_Module::getModule('google_analytics'); ?>
+  </body>
+</html>

@@ -1,1 +1,1 @@
-<?php class Comment_Controller extends Fw_Comment_Controller{}?>
+<?php class Comment_Controller extends Fw_Comment_Controller {}?>

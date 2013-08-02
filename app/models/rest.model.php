@@ -1,1 +1,0 @@
-<?php class Rest_Model extends Fw_Rest_Model{}?>

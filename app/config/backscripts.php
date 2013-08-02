@@ -1,6 +1,6 @@
 <?php
-	Fw_CCC::addBackJs('http://'.$_SERVER['SERVER_NAME'].JS_URI.'modernizr.foundation.js');	
-	Fw_CCC::addBackJs('http://'.$_SERVER['SERVER_NAME'].JS_URI.'foundation.min.js');
-	Fw_CCC::addBackJs('http://'.$_SERVER['SERVER_NAME'].JS_URI.'app.js');
-	Fw_CCC::addBackJs('http://'.$_SERVER['SERVER_NAME'].JS_URI.'zurb.mega-drop.js');
+    Fw_CCC::addBackJs(PUBLIC_URI.'bootstrap/js/bootstrap.min.js');  
+    Fw_CCC::addBackJs(PUBLIC_URI.'bootstrap/plugins/wysihtml5/wysihtml5-0.3.0.min.js');    
+    Fw_CCC::addBackJs(PUBLIC_URI.'bootstrap/plugins/wysihtml5/bootstrap-wysihtml5.js');    
+	Fw_CCC::addBackJs(PUBLIC_URI.'bootstrap/plugins/datepicker/js/bootstrap-datepicker.js');
 ?>
