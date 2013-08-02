@@ -1,0 +1,1 @@
+<?php class Ajax_Controller extends Fw_Ajax_Controller {} ?>
