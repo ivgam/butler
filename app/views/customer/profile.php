@@ -52,4 +52,5 @@ $oCustomer = Fw_Register::getRef('oCustomer');
 		</div>
 	</div>
 	<input type="submit" name="form_submision" class="btn btn-large btn-primary pull-right" value="Save"/>
+	<a style="margin-right:5px" href="<?= BASE_URI?>static/examples" class="btn btn-large btn-info pull-right">Return to Examples</a>
 </form>

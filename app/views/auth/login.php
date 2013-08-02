@@ -33,10 +33,14 @@
 </style>
 <form class="form-signin" method="post">
     <h2 class="form-signin-heading"><?= _('Please sign in'); ?></h2>
-    <input type="text" class="input-block-level" placeholder="Email address" name="username"/>
+    <input type="text" class="input-block-level" placeholder="Username" name="username"/>
     <input type="password" class="input-block-level" placeholder="Password" name="pwd"/>    
     <button class="btn btn-large btn-primary" type="submit"><?= _('Sign in'); ?></button>
 	<a class="pull-right" style="margin-top:15px" href="#recoveryPasswordModal" data-toggle="modal">Recover password</a>
+	<p style="margin-top:30px"><i>By default...the username & password are:</i></p>
+	<p><strong>Username:</strong> admin</p>
+	<p><strong>Password:</strong> admin</p>
+	<p><i>And...Please...remove this ( I'm in the file <strong>login.php</strong> in the path <strong>/app/views/auth</strong> )</i></p>
 </form>
 
 <!-- Modal -->
