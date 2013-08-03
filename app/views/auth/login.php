@@ -32,7 +32,6 @@
 
 </style>
 <form class="form-signin" method="post">
-<<<<<<< HEAD
     <h2 class="form-signin-heading"><?= _('Please sign in'); ?></h2>
     <input type="text" class="input-block-level" placeholder="Username" name="username"/>
     <input type="password" class="input-block-level" placeholder="Password" name="pwd"/>    
@@ -62,10 +61,3 @@
 		</form>
 	</div>
 </div>
-=======
-    <h2 class="form-signin-heading"><?= _('Please sign in');?></h2>
-    <input type="text" class="input-block-level" placeholder="Email address" name="username"/>
-    <input type="password" class="input-block-level" placeholder="Password" name="pwd"/>    
-    <button class="btn btn-large btn-primary" type="submit"><?= _('Sign in');?></button>
-</form>
->>>>>>> e9b6a406a4cdf7bd79b4deb817f8b33ce0720f2a
