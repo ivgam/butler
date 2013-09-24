@@ -1,10 +1,11 @@
 Butler
 =================
 
-Butler es un Framework PHP que pretende reducir la complejidad y el tiempo empleados a la hora de desarrollar un website o webapp
-mediante el uso de una estructura MVC y una serie de funcionalidades consideradas comunes y prácticas en la mayoría de proyectos.
+Butler is a PHP Framework that was created for reduce the complexity and time
+consumed when someone tries to develope a website or webapp using a MVC 
+structure. 
 
-Algunas de ellas son:
+Some of the native features developed are:
 
 1. Admin panel
 2. User management
@@ -13,9 +14,7 @@ Algunas de ellas son:
 6. Responsive design
 7. File system cache
 8. i18n
-9. Rest API
 10. CCC
-11. CDN support
 
 Quick start
 -----------
@@ -28,15 +27,18 @@ Authors
 **Iván García**
 + http://github.com/ivgam
 
+Collaborators
+-------------
+
 **Pedro Aspiazu**
 + https://github.com/pedroaspiazu
 
 **Joan Masó**
 + https://github.com/Leboski
 
-Collaborators
--------------
+**Víctor Blázquez**
++ http://www.linkedin.com/pub/victor-blazquez/23/44/34b
 
 Copyright and license
 ---------------------
-This softwares don't have yet any copyright or license.
+This software uses the GNU licence and it's free to use and fork.
