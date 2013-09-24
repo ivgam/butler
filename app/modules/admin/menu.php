@@ -2,12 +2,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="<?= BASE_URI?>admin">Butler</a>
+            <a class="brand" href="<?= BASE_URI?>admin"><img src="<?= PUBLIC_URI?>logo_admin.png"/></a>
             <div class="nav-collapse collapse">
                 <ul class="nav">  
 					<li><a href="<?= BASE_URI?>realtime/panel">Realtime</a></li>
@@ -26,9 +21,9 @@
                     <li class="dropdown">
                         <a id="conf-tools" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"><?= _('Tools');?> <b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="conf-tools">
-                            <li><a href="<?php echo Fw_Router::getUrl('minify', 'generateAll') ?>"><?= _('Minificar Scripts');?></a></li>                            
-                            <li><a href="<?php echo Fw_Router::getUrl('dumper', 'all') ?>"><?= _('Exportar BDD');?></a></li>                            
-                            <li><a href="<?php echo Fw_Router::getUrl('dumper', 'schema') ?>"><?= _('Exportar Estructura BDD');?></a></li>                            
+                            <li><a href="<?php echo Fw_Router::getUrl('minify', 'generateAll') ?>"><?= _('Minify Scripts');?></a></li>                            
+                            <li><a href="<?php echo Fw_Router::getUrl('dumper', 'all') ?>"><?= _('Export DB');?></a></li>                            
+                            <li><a href="<?php echo Fw_Router::getUrl('dumper', 'schema') ?>"><?= _('Export DB Schema');?></a></li>                            
                         </ul>
                     </li>
                 </ul>

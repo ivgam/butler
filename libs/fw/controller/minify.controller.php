@@ -11,7 +11,7 @@ class Fw_Minify_Controller extends Fw_Controller {
         $this->generateBackCss();
         $this->generateFrontJs();
         $this->generateBackJs();
-        $url = (isset($_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : BASE_URI . 'admin/';
+        $url = (isset($_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : BASE_URI . 'admin';
         header("Location: $url");
     }
 

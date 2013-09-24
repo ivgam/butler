@@ -7,7 +7,7 @@ class Fw_Post_Model extends Fw_Model {
         parent::__construct();
     }
 
-    public function getData($count = false, $limit = 20, $limitstart = 0, $cols = array('*')) {
+    public function getData($count = true, $limit = 20, $limitstart = 0, $cols = array('*')) {
         $cols = $this->formatSelectCols($cols);
         $subquery = '';
         if ($count) {

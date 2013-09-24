@@ -1,4 +1,4 @@
 <hr>
 <div class="footer" style="text-align: center">
-    <p>&copy; Company <?php echo date('Y') ?></p>
+    <p><?= COMPANY_NAME ?> <?php echo date('Y') ?></p>
 </div>

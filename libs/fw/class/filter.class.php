@@ -15,11 +15,12 @@ class Fw_Filter {
     }
 
     private static function init($params) {
-        self::$aVars['params'] = $params;
-        self::$aVars['post'] = $_POST;
-        self::$aVars['get'] = $_GET;
+        self::$aVars['params']	= $params;
+        self::$aVars['post']	= $_POST;
+        self::$aVars['get']		= $_GET;
         self::$aVars['request'] = $_REQUEST;
-        self::$aVars['cookie'] = $_COOKIE;
+        self::$aVars['cookie']	= $_COOKIE;
+        self::$aVars['files']	= $_FILES;
         //unset ($params, $_POST, $_GET, $_REQUEST);
     }
 
@@ -37,7 +38,7 @@ class Fw_Filter {
         if ($container == 'all') {
             foreach (self::$aVars as $container => $vars) {
                 if (key_exists($key, $vars)) {
-                    $to_return = $container[$key];
+                    $to_return = self::$aVars[$container][$key];
                 }
             }
         } else {

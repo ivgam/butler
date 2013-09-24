@@ -75,11 +75,11 @@ $error_message = Fw_Register::getRef('error_message');
 </style>
 <div class="container">
     <div class="jumbotron">
+		<img alt="<?= COMPANY_NAME ?> Logo" title="<?= COMPANY_NAME ?> Logo" src="<?= PUBLIC_URI ?>logo_black.png"/>
         <h1>Error <?= $error_no ?>!</h1>
         <p class="lead">
 			<?= $error_message ?>
         </p>
         <a class="btn btn-large btn-inverse" href="<?= BASE_URI?>">Go to Home</a>
     </div>
-	<?php Fw_Module::getModule('footer') ?>    
 </div>

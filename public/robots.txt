@@ -1,0 +1,14 @@
+User-agent: *
+Sitemap: http://localhost/sitemap.xml
+Disallow: /bootstrap/
+Disallow: /javascripts/
+Disallow: /stylesheets/
+Disallow: /templates/
+Disallow: /tmp/
+Disallow: /*.php$
+Disallow: /*.html$
+Disallow: /*.js$
+Disallow: /*.css$
+Disallow: http://fonts.googleapis.com/css?family=Oxygen
+Disallow: http://fonts.googleapis.com/css?family=Montserrat:400,700
+Disallow: http://fonts.googleapis.com/css?family=Roboto:400,700,300,500

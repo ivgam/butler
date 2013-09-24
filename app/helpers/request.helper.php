@@ -44,11 +44,12 @@ class Request_Helper {
 			'os' => Request_Helper::getOS(),
 			'ip' => $_SERVER['REMOTE_ADDR'],
 			'user_agent' => $_SERVER['HTTP_USER_AGENT'],
-			'uri'=> $_SERVER['REQUEST_URI']
+			'uri'=> $_SERVER['REQUEST_URI'],
+			'referer' => (isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'')
 		));
 		setcookie('visitor_last_request', base64_encode($id), time() + 15 * 60, '/');
+		define('VISIT_ID', (int)$id);
 	}
-
 }
 
 ?>

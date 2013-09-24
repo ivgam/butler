@@ -1,7 +1,7 @@
 <?php
 
 class Fw_Acl {
-
+	//TODO: Mejorar para añadir más perfiles
     public static function getUserType() {
         $oUser = Fw_Register::getRef('user');
         switch ($oUser['usertype']) {

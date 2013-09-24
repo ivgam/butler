@@ -1,1 +1,1 @@
-<?php class Post_Model extends Fw_Post_Model {}?>
+<?php class Post_Model extends Fw_Post_Model {} ?>

@@ -3,7 +3,7 @@
 class Fw_Page_Model extends Fw_Model {
 
     //OK
-    public function getData($count = false, $limit = 20, $limitstart = 0, $cols = array('*')) {
+    public function getData($count = true, $limit = 20, $limitstart = 0, $cols = array('*')) {
         $acl = parse_ini_file(CONFIG_PATH . DS . 'acl.ini', true);
         $result = array();
         foreach ($acl['subresources'] as $controller => $type) {
@@ -22,7 +22,7 @@ class Fw_Page_Model extends Fw_Model {
                 }
             }
         }
-        return ($count) ? array('rows' => array_slice($result, $limitstart, $limit), count($result)) : array_slice($result, $limitstart, $limit);
+        return ($count) ? array('rows' => array_slice($result, $limitstart, $limit), 'total'=>count($result)) : array_slice($result, $limitstart, $limit);
     }
 
     public function getRow($id = 'static-default', $cols = array('*')) {

@@ -1,0 +1,1 @@
+<?php class Attribution_Controller extends Fw_Attribution_Controller {} ?>

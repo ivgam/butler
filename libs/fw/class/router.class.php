@@ -6,6 +6,57 @@ class Fw_Router {
 		$url = isset($url) ? $url : $_SERVER['REQUEST_URI'];
 		$url = substr($url, strlen(BASE_URI));
 		$url = (strpos($url, '?')) ? strstr($url, '?', true) : $url;
+
+		if (SERVICE_MODE) {
+			if ($url == 'customer/subscribe') {
+				return array(
+					'controller' => 'Customer_Controller',
+					'task' => 'subscribe',
+					'resource' => 'customer',
+					'cacheable' => false,
+					'params' => array()
+				);
+			} else {
+				return array(
+					'controller' => 'Static_Controller',
+					'task' => 'service',
+					'resource' => 'static',
+					'cacheable' => false,
+					'params' => array()
+				);
+			}
+		}
+
+		if ($url == 'sitemap.xml') {
+			return array(
+				'controller' => 'Static_Controller',
+				'task' => 'sitemap',
+				'resource' => 'static',
+				'cacheable' => false,
+				'params' => array()
+			);
+		}
+		
+		if ($url == 'feed.xml') {
+			return array(
+				'controller' => 'Static_Controller',
+				'task' => 'feed',
+				'resource' => 'static',
+				'cacheable' => false,
+				'params' => array()
+			);
+		}
+
+		if (empty($url) || $url[0] == '?') {
+			return array(
+				'controller' => 'Static_Controller',
+				'task' => 'home',
+				'resource' => 'static',
+				'cacheable' => false,
+				'params' => array()
+			);
+		}
+
 		$parts = explode('/', $url);
 		$resource = (isset($parts[0])) ? $parts[0] : false;
 		$controller = $resource . '_controller';
@@ -18,14 +69,16 @@ class Fw_Router {
 						'controller' => $controller,
 						'task' => $task,
 						'resource' => $resource,
-						'cacheable' => false,
-						'params' => array('id' => (isset($parts[2])) ? $parts[2] : false)
+						'cacheable' => Cache_Helper::isCacheable($resource, $task),
+						'params' => array_merge(
+								array_slice($parts, 2), array('id' => (isset($parts[2])) ? $parts[2] : false)
+						)
 			);
 		}
 		$routes = Fw_Register::getRef('routes');
 		foreach ($routes as $route) {
 			if (preg_match($route['regex'], $url, $matches)) {
-				unset($matches[0]);				
+				unset($matches[0]);
 				$i = 1;
 				foreach ($route['params'] as $k => $v) {
 					$route['params'][$k] = isset($matches[$i]) ? $matches[$i] : $v;
@@ -41,23 +94,13 @@ class Fw_Router {
 				);
 			}
 		}
-		if (empty($url)) {
-			return array(
-				'controller' => 'Static_Controller',
-				'task' => 'home',
-				'resource' => 'static',
-				'cacheable' => true,
-				'params' => array()
-			);
-		} else {
-			return array(
-				'controller' => 'Error_Controller',
-				'task' => 'error',
-				'resource' => 'error',
-				'cacheable' => true,
-				'params' => array('id' => 404)
-			);
-		}
+		return array(
+			'controller' => 'Error_Controller',
+			'task' => 'error',
+			'resource' => 'error',
+			'cacheable' => false,
+			'params' => array('id' => 404)
+		);
 	}
 
 	public static function getUrl($resource, $task) {

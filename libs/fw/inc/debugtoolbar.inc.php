@@ -31,15 +31,9 @@
         margin-left:15px;
         padding-bottom:3px;
     }
-    span.queries{background: url('<?php echo IMG_URI ?>database.png') no-repeat; }
-    span.memory{background: url('<?php echo IMG_URI ?>page_white_php.png') no-repeat}
-    span.errors{background: url('<?php echo IMG_URI ?>bug.png') no-repeat}	
-    span.headers{background: url('<?php echo IMG_URI ?>xhtml.png') no-repeat}	
-    span.time{background: url('<?php echo IMG_URI ?>time.png') no-repeat}
-    span.vars{background: url('<?php echo IMG_URI ?>book.png') no-repeat}
     .information{
+		background-color: #ddd;
         padding-right:0;
-        background: #ddd url('<?php echo IMG_URI ?>information.png') no-repeat;
         width:15px;
         height:18px;		
         padding-left:2px;
@@ -67,13 +61,13 @@
         });
     });
 </script>
-<span class="information">&nbsp;</span>
+<span class="information"><i class="icon icon-info-sign"></i>&nbsp;</span>
 <div id="debug-toolbar">	
     <ul class="debug">
-        <li class="debug"><span class="queries">Queries (<?php echo count(Fw_Register::getRef('query_log')) ?>)</span></li>
-        <li class="debug"><span class="memory">Memory Usage (<?php echo round(memory_get_usage() / (1024 * 1024), 2) . 'MB' ?>)</span></li>
+        <li class="debug"><span class="queries"><i class="icon icon-random"></i> Queries (<?php echo count(Fw_Register::getRef('query_log')) ?>)</span></li>
+        <li class="debug"><span class="memory"><i class="icon icon-hdd"></i> Memory Usage (<?php echo round(memory_get_usage() / (1024 * 1024), 2) . 'MB' ?>)</span></li>
         <li class="debug">
-            <span class="errors">Errors (<?php
+            <span class="errors"><i class="icon icon-remove"></i> Errors (<?php
 echo
  ((Fw_Register::getRef('error')) ? count(Fw_Register::getRef('error')) : 0)     +
  ((Fw_Register::getRef('warning')) ? count(Fw_Register::getRef('warning')) : 0) +
@@ -82,9 +76,9 @@ echo
 ?>) 
             </span>
         </li>
-        <li class="debug"><span class="headers">Headers</span></li>
-        <li class="debug"><span class="vars">Vars</span></li>
-        <li class="debug"><span class="time">Time: <?php echo Fw_Register::getRef('end_time') - Fw_Register::getRef('ini_time') ?>s</span></li>
+        <li class="debug"><span class="headers"><i class="icon icon-align-justify"></i> Headers</span></li>
+        <li class="debug"><span class="vars"><i class="icon icon-tags"></i> Vars</span></li>
+        <li class="debug"><span class="time"><i class="icon icon-time"></i> Time: <?php echo Fw_Register::getRef('end_time') - Fw_Register::getRef('ini_time') ?>s</span></li>
     </ul>
     <div id="debug-container">
         <div id="debug-toolbar-queries" class="debug-toolbar-section">

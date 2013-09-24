@@ -1,7 +1,7 @@
 <?php
 
 class Fw_User_Controller extends Fw_CrudController {
-
+	//TODO: Use user_type TABLE
     public function __construct() {
         $this->model = 'User_Model';
         $this->setParams = array(
@@ -12,12 +12,12 @@ class Fw_User_Controller extends Fw_CrudController {
         $this->adminParams = array(
             'ID' => 'id',
             'Username' => 'username',
-            'Tipo' => 'usertype'
+            'Type' => 'usertype'
         );
         $this->editParams = array(
             'Username' => array('type' => 'text', 'name' => 'username', 'populate' => true),
             'Password' => array('type' => 'password', 'name' => 'password', 'populate' => false),
-            'Tipo' => array('type' => 'text', 'name' => 'usertype', 'populate' => true)
+            'Type' => array('type' => 'text', 'name' => 'usertype', 'populate' => true)
         );
     }
 

@@ -9,7 +9,7 @@ class Fw_Db extends PDO {
     public $pass;
     protected static $instances;
 
-    public function __construct($instance = 'local') {
+    public function __construct($instance = DB_INSTANCE) {
         $databases = Fw_Register::getRef('databases');		
         $this->engine = $databases[$instance]['engine'];
         $this->host = $databases[$instance]['host'];
